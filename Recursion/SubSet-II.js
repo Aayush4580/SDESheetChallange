@@ -24,3 +24,9 @@ const helper = (index, arr, subset, unique, res) => {
   helper(index + 1, arr, subset, unique, res);
   return res;
 };
+
+// Input: array = [1,2,2]
+// Output: [ [ ],[1],[1,2],[1,2,2],[2],[2,2] ]
+
+var array = [1, 2, 2];
+console.log(subsetsWithDup(array));
