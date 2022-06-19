@@ -25,7 +25,7 @@ c.right = g;
 //      / \   \
 //     d   e   g
 
-// output: d b a c g
+// output: d b e c g
 
 var levelOrderTraversal = (root) => {
   if (!root) return;
@@ -41,9 +41,10 @@ var levelOrderTraversal = (root) => {
       var currentNode = queue.shift();
       var currentHd = currentNode.hd;
       subArr.push(currentNode.data);
-      if (!map.has(currentNode.hd)) {
-        map.set(currentNode.hd, currentNode.data);
-      }
+      // if (!map.has(currentNode.hd)) {
+      map.set(currentNode.hd, currentNode.data);
+      // }
+      //the if statement has been removed so that the updated value can be stored in key
       if (currentNode.left) {
         currentNode.left.hd = currentHd - 1;
         queue.push(currentNode.left);
