@@ -32,7 +32,7 @@ f.left = g;
 var maxWidthOfBinaryTree = (root) => {
   if (!root) return;
   var max = 0;
-  // lets add a new parameter horizontal distance hd to root
+  // lets add a new parameter position with root
   var queue = [[root, 0]];
   while (queue.length > 0) {
     let length = queue.length;
@@ -41,9 +41,9 @@ var maxWidthOfBinaryTree = (root) => {
 
     for (var i = 0; i < length; i++) {
       var [node, position] = queue.shift();
-
-      if (node.left) queue.push([node.left, position * 2 + 1]); // find next left idx & node
-      if (node.right) queue.push([node.right, position * 2 + 2]); // find next right idx & node
+      const subIdx = position - first;
+      if (node.left) queue.push([node.left, subIdx * 2 + 1]); // find next left idx & node
+      if (node.right) queue.push([node.right, subIdx * 2 + 2]); // find next right idx & node
     }
     const width = last - first + 1; // add 1, 0-index based
     max = Math.max(max, width);
