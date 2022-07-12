@@ -8,12 +8,13 @@ var longestCommonPrefix = (strs) => {
   var str = "";
   var current = strs[0];
   for (var i = 0; i < current.length; i++) {
-    var found = false;
     for (var j = 1; j < strs.length; j++) {
       var currentLetter = current[i];
-      found = currentLetter === strs[j][i];
+      if (currentLetter !== strs[j][i]) {
+        return str;
+      }
     }
-    if (found) str += current[i];
+    str += current[i];
   }
   return str;
 };
